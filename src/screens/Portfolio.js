@@ -1,19 +1,30 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import CoinCard from "../components/coins/CoinCard";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: "80%",
+const DUMMY_PORTFOLIO = [
+  {
+    name: "Bitcoin",
+    price: 24000,
+    description: "BTC is a King of Crypto",
+    image: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=023",
   },
+  {
+    name: "Ethereum",
+    price: 1902,
+    description: "ETH is a ultra sound money",
+    image: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=023",
+  },
+  {
+    name: "Binance Coin",
+    price: 349,
+    description: "BNB is a wet CZ dream",
+    image: "https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=023",
+  },
+];
+
+const useStyles = makeStyles({
   portfolio: {
     display: "flex",
     minHeight: "100vh",
@@ -24,44 +35,31 @@ const useStyles = makeStyles({
 
 const Portfolio = () => {
   const classes = useStyles();
+  console.log(DUMMY_PORTFOLIO[0].name);
+
   return (
     <div className={classes.portfolio}>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          justifyContent="center"
-          alignItems="stretch"
-          container
-          spacing={3}
-        >
-          <Grid justify="center" alignItems="center" item>
-            {/* <CoinCard
-              name="Bitcoin"
-              price="24001$"
-              image="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=023"
-              description="ETH is a ultra sound money"
-            /> */}
-            K
-          </Grid>
-
-          <Grid justify="center" alignItems="center" item>
-            {/* <CoinCard
-              name="Ehtereum"
-              price="1901$"
-              image="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=023"
-              description="Bitcoin is a king of Crypto"
-            /> */}
-            F
-          </Grid>
-
-          <Grid item>
-            {/* <CoinCard
-              name="Binance Coin"
-              price="402$"
-              image="https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=023"
-              description="BNB is a wet CZ dream"
-            /> */}
-            C
-          </Grid>
+        <Typography variant='h4' textAlign='center'>This is youre Portfolio fren</Typography>
+        <Grid sx={{marginTop: '15px'}} container spacing={2} height="100%">
+          {DUMMY_PORTFOLIO.map((coin) => (
+            <Grid
+              xs={12}
+              sm={6}
+              md={4}
+              lg={2}
+              key={coin.name}
+              height="100%"
+              item
+            >
+              <CoinCard
+                name={coin.name}
+                price={coin.price}
+                image={coin.image}
+                description={coin.description}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </div>
