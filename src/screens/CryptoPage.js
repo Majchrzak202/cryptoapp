@@ -1,9 +1,24 @@
-import React from 'react'
-import CoinList from '../components/coins/CoinList'
+import React, {useState, useEffect} from "react";
+import CoinList from "../components/coins/CoinList";
 const CryptoPage = () => {
-  return (
-    <div><CoinList/></div>
-  )
-}
+  const [coins, setCoins] = useState([]);
 
-export default CryptoPage
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://api.coinstats.app/public/v1/coins?skip=0&limit=100&currency=USD"
+      );
+      const data = await response.json();
+      setCoins(data);
+    };
+
+    fetchData();
+  }, []);
+  return (
+    <div style={{marginTop: '50px', marginBottom: '50px'}}>
+      <CoinList coins={coins} />
+    </div>
+  );
+};
+
+export default CryptoPage;
