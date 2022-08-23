@@ -4,26 +4,37 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    margin: "auto",
+    width: " 100px",
+    height: "100px",
+    marginTop: '30px'
   },
   cardContent: {
     display: "flex",
-    justifyContent: "space-between",
-    marginTop: "50px",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20x",
+  },
+  root: {
+    maxWidth: "80%",
+    maxHeight: "80%",
+    margin: 'auto'
+  },
+  img: {
+    width: "20%",
+    height: "20%",
   },
 });
-const CoinCard = (price, name, description, image) => {
+const CoinCard = ({ price, name, description, image }) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media}>
-        <img style={{ width: "50px", height: "50px" }} src={image} />
-      </CardMedia>
-      <CardContent className={classes.cardContent} justify>
+      <CardMedia className={classes.media} image={image}></CardMedia>
+      <CardContent className={classes.cardContent}>
         <Typography>
-          {name}
-          {price}
+          <h2>{name}</h2>
+          <p>{price} $</p>
           {description}
         </Typography>
       </CardContent>
