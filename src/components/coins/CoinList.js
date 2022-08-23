@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, Box, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Card, Box} from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import CoinTable from "./CoinTable";
 import Searchbar from "../searchbar/Searchbar";
@@ -14,15 +14,19 @@ const useStyles = makeStyles({
   },
 });
 
-const CoinList = () => {
+const CoinList = ({coins}) => {
+  const [search, setSearch] = useState('');
   const classes = useStyles();
+
+  console.log(coins)
+
   return (
     <section className={classes.coinpage}>
       <Box>
-        <Searchbar />
+        <Searchbar setSearch={setSearch} />
       </Box>
       <Card>
-        <CoinTable />
+        <CoinTable coins={coins} search={search} />
       </Card>
     </section>
   );
