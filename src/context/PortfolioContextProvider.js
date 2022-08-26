@@ -1,0 +1,47 @@
+import React, { useContext, createContext, useState, useEffect } from "react";
+
+const userPortfolioContext = createContext();
+
+const PortfolioContextProvider = ({ children }) => {
+  const [portfolio, setPortfolio] = useState({});
+
+  const addToPortfolioHandler = (coin) => {
+    setPortfolio(coin.coin);
+  };
+  useEffect(() => {
+    addCoinsToDatabase();
+  }, [portfolio]);
+
+  if (portfolio === "undefined") {
+    return null;
+  }
+
+  const addCoinsToDatabase = async () => {
+    let coinId = portfolio.name;
+    const response = await fetch(
+      `https://cryptocurrency-project-b4951-default-rtdb.firebaseio.com/crypto/${coinId}.json`,
+      {
+        method: "put",
+        body: JSON.stringify(portfolio),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
+  return (
+    <userPortfolioContext.Provider
+      value={{ portfolio, addToPortfolioHandler, addCoinsToDatabase }}
+    >
+      {children}
+    </userPortfolioContext.Provider>
+  );
+};
+
+export default PortfolioContextProvider;
+export function usePortfolio() {
+  return useContext(userPortfolioContext);
+}
