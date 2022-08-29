@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import CoinList from "../components/coins/CoinList";
+
 const CryptoPage = () => {
   const [coins, setCoins] = useState([]);
 
@@ -15,7 +16,7 @@ const CryptoPage = () => {
     fetchData();
   }, []);
   return (
-    <div style={{marginTop: '50px', marginBottom: '50px'}}>
+    <div style={{ marginBottom: "50px" }}>
       <CoinList coins={coins} />
     </div>
   );
