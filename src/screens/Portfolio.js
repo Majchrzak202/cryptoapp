@@ -3,8 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Box, Typography } from "@mui/material";
 import CoinCard from "../components/coins/coin-card/CoinCard";
 import { Link } from "react-router-dom";
-import {Skeleton} from "@mui/material";
-
+import { Skeleton } from "@mui/material";
 
 const useStyles = makeStyles({
   portfolio: {
@@ -29,6 +28,7 @@ const Portfolio = () => {
       "https://cryptocurrency-project-b4951-default-rtdb.firebaseio.com/crypto.json"
     );
     const data = await response.json();
+    console.log(data);
     const loadedCoins = [];
 
     for (const key in data) {
@@ -37,9 +37,13 @@ const Portfolio = () => {
         id: data[key].id,
         price: data[key].price,
         icon: data[key].icon,
+        priceChangeHour: data[key].priceChange1h,
+        priceChangeDay: data[key].priceChange1d,
+        priceChangeWeek: data[key].priceChange1w,
       });
     }
     setCoins(loadedCoins);
+    console.log(loadedCoins);
   };
 
   if (coins.length === 0) {
@@ -54,7 +58,7 @@ const Portfolio = () => {
       >
         <Skeleton
           variant="rectangular"
-          borderRadius="5px"
+          borderradius="5px"
           animation="wave"
           sx={{ width: 1100, height: 500 }}
         />
@@ -79,17 +83,21 @@ const Portfolio = () => {
               height="100%"
               item
             >
-              <Link
+              {/* <Link
                 style={{ textDecoration: "none" }}
                 to={`/coinpage/${coin.id}`}
-              >
+              > */}
                 <CoinCard
+                  id={coin.id}
                   name={coin.name}
                   price={coin.price}
                   icon={coin.icon}
                   description={coin.description}
+                  priceChangeHour={coin.priceChangeHour}
+                  priceChangeDay={coin.priceChangeDay}
+                  priceChangeWeek={coin.priceChangeWeek}
                 />
-              </Link>
+            {/*   </Link> */}
             </Grid>
           ))}
         </Grid>
