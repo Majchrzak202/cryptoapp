@@ -9,11 +9,15 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "100vh",
-    marginTop: '-50px'
+    marginTop: "-50px",
   },
   img: {
     width: "200px",
     height: "200px",
+  },
+  title: {
+    fontFamily: "Roboto",
+    fontSize: "28px",
   },
 });
 
@@ -22,7 +26,9 @@ const About = () => {
   return (
     <div className={classes.about}>
       <img className={classes.img} alt="crypto" src={cryptoLogo} />
-      <h4>This is an educational Project made with Love and React! </h4>
+      <h4 className={classes.title}>
+        This is an educational Project <br></br> made with Love and React!
+      </h4>
     </div>
   );
 };
