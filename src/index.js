@@ -7,18 +7,21 @@ import UserAuthContextProvider from "./context/UserAuthContextProvider";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import PortfolioContextProvider from "./context/PortfolioContextProvider";
+import { ThemeContextProvider } from "./context/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <UserAuthContextProvider>
-        <PortfolioContextProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </PortfolioContextProvider>
-      </UserAuthContextProvider>
+      <ThemeContextProvider>
+        <UserAuthContextProvider>
+          <PortfolioContextProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </PortfolioContextProvider>
+        </UserAuthContextProvider>
+      </ThemeContextProvider>
     </Provider>
   </React.StrictMode>
 );

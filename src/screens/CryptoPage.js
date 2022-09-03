@@ -16,7 +16,7 @@ const CryptoPage = () => {
     fetchData();
   }, []);
   return (
-    <div style={{ marginBottom: "50px" }}>
+    <div style={{ marginBottom: "100px" }}>
       <CoinList coins={coins} />
     </div>
   );
