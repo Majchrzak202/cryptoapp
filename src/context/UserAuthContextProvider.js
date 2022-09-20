@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from "@firebase/auth";
-import auth from "../firebase/firebase";
+import { auth } from "../firebase/firebase";
 
 const userAuthContext = createContext();
 
@@ -32,7 +32,6 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(user);
     });
   }, [user]);
 
