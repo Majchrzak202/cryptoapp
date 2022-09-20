@@ -12,7 +12,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +20,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const { SignUp } = useAuth();
   const theme = createTheme();
+  const navigate = useNavigate()
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const Signup = () => {
 
     try {
       await SignUp(email, password);
-      console.log("Succes!");
+      navigate('/cryptos')
     } catch (err) {
       setError(err.message);
       console.log(error);
@@ -35,20 +36,32 @@ const Signup = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        style={{ minHeight: "100vh", padding: "30px" }}
+        component="main"
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 8,
+          }}
           sx={{
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "black" }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" align="center">
             Sign up
           </Typography>
           <Box
