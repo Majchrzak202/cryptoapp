@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAuth } from "../../context/UserAuthContextProvider";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 const Login = () => {
@@ -20,24 +20,30 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { Login } = useAuth();
+  const navigate = useNavigate()
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await Login(email, password);
+      navigate('/cryptos')
     } catch (err) {
       setError(err.message);
-      console.log(error);
     }
   };
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        style={{ minHeight: "100vh", padding: "30px" }}
+        component="main"
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 1,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -55,6 +61,18 @@ const Login = () => {
             noValidate
             sx={{ mt: 1 }}
           >
+            {error && (
+              <Typography
+                style={{
+                  color: "black",
+                  backgroundColor: "#FF6347",
+                  borderRadius: "3px",
+                  paddingLeft: "3px",
+                }}
+              >
+                {error}
+              </Typography>
+            )}
             <TextField
               margin="normal"
               required
@@ -91,14 +109,10 @@ const Login = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to>
-                  Forgot password?
-                </Link>
+                <Link to='/forgot'>{"Forgot password?"}</Link>
               </Grid>
               <Grid item>
-                <Link to='/signup'>
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Link to="/signup">{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
           </Box>
