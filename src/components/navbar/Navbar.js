@@ -12,18 +12,43 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CardMedia } from "@mui/material";
-
 import cryptoLogo from "./../../assets/cryptoLogo.png";
 import useStyles from "./Styles";
-
-const pages = ["Top Coins", "About", "Blog"];
-const settings = ["Portfolio", "Dashboard", "Logout"];
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/UserAuthContextProvider";
+import { useTheme } from "../../context/ThemeContext";
 
 const Navbar = () => {
+  const { Logout, user } = useAuth();
+  const { theme } = useTheme();
+  const classes = useStyles();
+
+  const settings = [
+    <Link style={{ textDecoration: "none" }} to="/portfolio">
+      Portfolio
+    </Link>,
+    <Link style={{ textDecoration: "none" }} to="/settings">
+      Settings
+    </Link>,
+    <Link style={{ textDecoration: "none" }} to="/" onClick={Logout}>
+      Logout
+    </Link>,
+  ];
+
+  const pages = [
+    <Link className={classes.link}  to="/cryptos">
+      CryptoPage
+    </Link>,
+    <Link className={classes.link} to="/about">
+      About
+    </Link>,
+    <Link className={classes.link} to="/contact">
+      Contact
+    </Link>,
+  ];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const classes = useStyles();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,7 +67,7 @@ const Navbar = () => {
 
   return (
     <div className={classes.appbar}>
-      <AppBar className={classes.appbar} position="static">
+      <AppBar id={theme} position="fixed">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <CardMedia sx={{ display: { xs: "none", md: "flex" } }}>
@@ -60,17 +85,20 @@ const Navbar = () => {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
+                fontFamily: "Roboto",
                 fontWeight: 500,
-                letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}
             >
-              CRYPTO APP
+              Coin Sauce
             </Typography>
+            {/*  <Switch onChange={toggleTheme}></Switch> */}
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              className={classes.mobileMenu}
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -100,7 +128,7 @@ const Navbar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={Math.random()} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -122,19 +150,19 @@ const Navbar = () => {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontFamily: "monospace",
+                fontFamily: "Roboto",
                 fontWeight: 700,
-                letterSpacing: ".3rem",
+
                 color: "inherit",
                 textDecoration: "none",
               }}
             >
-              CRYPTO APP
+              Coin Sauce
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button
-                  key={page}
+                  key={Math.random()}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
@@ -143,35 +171,57 @@ const Navbar = () => {
               ))}
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+            {user ? (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={Math.random()} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : (
+              <Box style={{ display: "flex" }}>
+                {/*  <Link to="/signup">
+                  <Button>
+                    <Typography style={{ color: "white", fontFamily: 'roboto' }}>SignUp</Typography>
+                  </Button>
+                </Link> */}
+                <Link style={{ textDecoration: "none" }} to="/login">
+                  <Button>
+                    <Typography
+                      style={{ color: "white", fontFamily: "roboto" }}
+                    >
+                      Login
+                    </Typography>
+                  </Button>
+                </Link>
+              </Box>
+            )}
           </Toolbar>
         </Container>
       </AppBar>

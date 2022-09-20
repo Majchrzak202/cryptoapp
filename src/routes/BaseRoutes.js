@@ -1,8 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-
-
-
 import Portfolio from "../screens/Portfolio";
 import CoinPage from "../components/coins/coin-page/CoinPage";
 import About from "../screens/About";
@@ -14,6 +11,7 @@ import Settings from "../screens/Settings";
 import LoginMemo from "../screens/LoginMemo";
 import HomePage from "../screens/HomePage";
 import CryptoPage from "../screens/CryptoPage";
+import ForgotPassword from "../components/login/ForgotPassword";
 
 
 
@@ -44,6 +42,7 @@ const BaseRoutes = () => {
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path='/forgot' element={<ForgotPassword/>}></Route>
     </Routes>
   );
 };
