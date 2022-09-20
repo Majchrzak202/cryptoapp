@@ -1,0 +1,17 @@
+.App {
+  background-color: aqua;
+  margin-top: 60px;
+}
+
+#Light {
+  background-color: rgb(242, 244, 246);
+}
+
+#Dark {
+  background-color: rgba(27, 31, 36, 255);
+  color: white;
+}
+
+.font-link {
+  font-family: 'Roboto'
+}
