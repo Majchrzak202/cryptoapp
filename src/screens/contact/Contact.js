@@ -9,31 +9,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  root: { backgroundColor: "rgba(1,10,21,255)" },
-  container: {
-    marginBottom: 50,
-    paddingTop: 30,
-    display: "flex",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    minHeight: "100vh",
-
-    width: "auto",
-    [theme.breakpoints.up(2000)]: {
-      minWidth: 1500,
-      paddingTop: 100,
-      minHeight: "70vh",
-    },
-    [theme.breakpoints.down(1000)]: {
-      paddingTop: 100,
-
-      paddingLeft: 50,
-    },
-  },
-}));
+import useStyles from "./Styles";
 
 const ContactForm = () => {
   const form = useRef();
