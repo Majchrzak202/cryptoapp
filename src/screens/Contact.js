@@ -25,9 +25,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(2000)]: {
       minWidth: 1500,
       paddingTop: 100,
-      minHeight: '70vh'
+      minHeight: "70vh",
     },
-   
+    [theme.breakpoints.down(1000)]: {
+      paddingTop: 100,
+
+      paddingLeft: 50,
+    },
   },
 }));
 
