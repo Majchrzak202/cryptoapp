@@ -6,6 +6,15 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Link as SmoothLink } from "react-scroll";
 import useStyles from "./Styles";
 
+const glowVariants = {
+  initial: {
+    opacity: 0,
+  },
+  hover: {
+    opacity: 1,
+  },
+};
+
 const MainMenu = () => {
   const classes = useStyles();
   return (
