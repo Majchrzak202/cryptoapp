@@ -160,13 +160,15 @@ const Navbar = () => {
                 ))}
               </Menu>
             </Box>
-            <CardMedia sx={{ display: { xs: "flex", md: "none" } }}>
-              <img
-                alt="cryptoLogo"
-                style={{ width: "100px", height: "40px" }}
-                src={cryptoLogo}
-              />
-            </CardMedia>
+            <Link to="/">
+              <CardMedia sx={{ display: { xs: "flex", md: "none" } }}>
+                <img
+                  alt="cryptoLogo"
+                  style={{ width: "100px", height: "40px" }}
+                  src={cryptoLogo}
+                />
+              </CardMedia>
+            </Link>
             <Typography
               variant="h5"
               noWrap
@@ -198,7 +200,8 @@ const Navbar = () => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <SettingsIcon fontSize='large'
+                    <SettingsIcon
+                      fontSize="large"
                       style={{ color: "rgba(180, 206, 241, 255)" }}
                     />
                   </IconButton>
@@ -228,11 +231,6 @@ const Navbar = () => {
               </Box>
             ) : (
               <Box style={{ display: "flex" }}>
-                {/*  <Link to="/signup">
-                  <Button>
-                    <Typography style={{ color: "white", fontFamily: 'roboto' }}>SignUp</Typography>
-                  </Button>
-                </Link> */}
                 <Link style={{ textDecoration: "none" }} to="/login">
                   <Button>
                     <Typography
