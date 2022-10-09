@@ -8,6 +8,7 @@ import PasswordIcon from "@mui/icons-material/Password";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth } from "../context/UserAuthContextProvider";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   settings: {
@@ -29,8 +30,6 @@ const useStyles = makeStyles({
     minHeight: "auto",
     padding: "50px",
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     flexDirection: "column",
   },
   gridItem: {
@@ -64,71 +63,91 @@ const Settings = () => {
   return (
     <div id={theme} className={classes.settings}>
       <Card id={theme} className={classes.card}>
-        <AccountCircleIcon fontSize="large" />
-        <Typography style={{ fontSize: "10px", padding: "10px" }}>
-          {user.email}
-        </Typography>
-        <Grid container>
-          <Grid
-            className={classes.gridItem}
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Box className={classes.settingsBox}>
-              <Typography
-                style={{ fontFamily: "Roboto", color: "rgb(128,128,128)" }}
-              >
-                Settings
-              </Typography>
-            </Box>
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Link style={{textDecoration: 'none'}} to='/cryptos'>
+            <Button variant="raised" id={theme} >X</Button>
+          </Link>
+        </Box>
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <AccountCircleIcon fontSize="large" />
+          <Typography style={{ fontSize: "10px", padding: "10px" }}>
+            {user.email}
+          </Typography>
+          <Grid container>
+            <Grid
+              className={classes.gridItem}
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <Box className={classes.settingsBox}>
+                <Typography
+                  style={{ fontFamily: "Roboto", color: "rgb(128,128,128)" }}
+                >
+                  Settings
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid
+              className={classes.settingsGrid}
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <Box className={classes.settingsItemBox}>
+                <DarkModeIcon fontSize="small" />
+                <Typography style={{ fontFamily: "Roboto", marginLeft: "3px" }}>
+                  Dark Mode
+                </Typography>
+              </Box>
+              <Switch onChange={toggleTheme} />
+            </Grid>
+            <Grid
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <Box className={classes.settingsItemBox}>
+                <PasswordIcon style={{ fill: "black" }} fontSize="small" />
+                <Typography style={{ fontFamily: "Roboto", marginLeft: "3px" }}>
+                  Reset Password
+                </Typography>
+              </Box>
+              <Button>
+                <ArrowForwardIosIcon />
+              </Button>
+            </Grid>
           </Grid>
-          <Grid
-            className={classes.settingsGrid}
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Box className={classes.settingsItemBox}>
-              <DarkModeIcon fontSize="small" />
-              <Typography style={{ fontFamily: "Roboto", marginLeft: "3px" }}>
-                Dark Mode
-              </Typography>
-            </Box>
-            <Switch onChange={toggleTheme} />
-          </Grid>
-          <Grid
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Box className={classes.settingsItemBox}>
-              <PasswordIcon style={{ fill: "black" }} fontSize="small" />
-              <Typography style={{ fontFamily: "Roboto", marginLeft: "3px" }}>
-                Reset Password
-              </Typography>
-            </Box>
+          <Box style={{ paddingTop: "50px" }}>
             <Button>
-              <ArrowForwardIosIcon />
+              Logout
+              <LogoutIcon />
             </Button>
-          </Grid>
-        </Grid>
-        <Box style={{ paddingTop: "50px" }}>
-          <Button>
-            Logout
-            <LogoutIcon />
-          </Button>
+          </Box>
         </Box>
       </Card>
     </div>

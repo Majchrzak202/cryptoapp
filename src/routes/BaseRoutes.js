@@ -1,20 +1,18 @@
 import React from "react";
-import { Routes, Route } from "react-router";
-import Portfolio from "../screens/Portfolio";
-
-import About from "../screens/About";
-import Contact from "../screens/Contact";
+import { Route } from "react-router";
+import Portfolio from "../screens/portfolio/Portfolio";
+import About from "../screens/about/About";
+import Contact from "../screens/contact/Contact";
 import SignUp from "../components/login/Signup";
 import Login from "../components/login/Login";
 import ProtectedRoute from "../firebase/ProtectedRoute";
 import Settings from "../screens/Settings";
-import LoginMemo from "../screens/LoginMemo";
+import LoginMemo from "../components/login/LoginMemo";
 import HomePage from "../screens/HomePage";
 import CryptoPage from "../screens/CryptoPage";
 import ForgotPassword from "../components/login/ForgotPassword";
-import Main from "../screens/Main";
+import Main from "../screens/main/Main";
 import CoinPage from "../components/coins/coin-page/CoinPage";
-
 import CustomRoutes from "./CustomRoutes";
 
 const BaseRoutes = () => {

@@ -12,16 +12,69 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CardMedia } from "@mui/material";
-import cryptoLogo from "./../../assets/cryptoLogo.png";
+import cryptoLogo from "./../../assets/cryptoLogo.svg";
 import useStyles from "./Styles";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/UserAuthContextProvider";
 import { useTheme } from "../../context/ThemeContext";
+import { Link as SmoothLink } from "react-scroll";
+import { useLocation } from "react-router-dom";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Navbar = () => {
   const { Logout, user } = useAuth();
   const { theme } = useTheme();
   const classes = useStyles();
+  const location = useLocation();
+  const currentPath = location.pathname;
+  let pages = [];
+
+  if (currentPath === "/") {
+    pages = [
+      <SmoothLink
+        className={classes.link}
+        to="mainMenu"
+        spy={true}
+        smooth={true}
+        offset={-30}
+        duration={500}
+      >
+        Main Menu
+      </SmoothLink>,
+      <SmoothLink
+        to="about"
+        spy={true}
+        smooth={true}
+        offset={-30}
+        duration={500}
+        className={classes.link}
+      >
+        About
+      </SmoothLink>,
+      <SmoothLink
+        to="contact"
+        spy={true}
+        smooth={true}
+        offset={-30}
+        duration={500}
+        className={classes.link}
+      >
+        Contact
+      </SmoothLink>,
+    ];
+  } else {
+    pages = [
+      <Link className={classes.link} to="/">
+        Main Menu
+      </Link>,
+      <Link className={classes.link} to="/about">
+        About
+      </Link>,
+      <Link className={classes.link} to="/contact">
+        Contact
+      </Link>,
+    ];
+  }
 
   const settings = [
     <Link style={{ textDecoration: "none" }} to="/portfolio">
@@ -32,18 +85,6 @@ const Navbar = () => {
     </Link>,
     <Link style={{ textDecoration: "none" }} to="/" onClick={Logout}>
       Logout
-    </Link>,
-  ];
-
-  const pages = [
-    <Link className={classes.link}  to="/cryptos">
-      CryptoPage
-    </Link>,
-    <Link className={classes.link} to="/about">
-      About
-    </Link>,
-    <Link className={classes.link} to="/contact">
-      Contact
     </Link>,
   ];
 
@@ -70,30 +111,15 @@ const Navbar = () => {
       <AppBar id={theme} position="fixed">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <CardMedia sx={{ display: { xs: "none", md: "flex" } }}>
-              <img
-                alt="cryptoLogo"
-                style={{ width: "30px", height: "30px" }}
-                src={cryptoLogo}
-              />
-            </CardMedia>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "Roboto",
-                fontWeight: 500,
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              Coin Sauce
-            </Typography>
-            {/*  <Switch onChange={toggleTheme}></Switch> */}
+            <Link to="/">
+              <CardMedia sx={{ display: { xs: "none", md: "flex" } }}>
+                <img
+                  alt="cryptoLogo"
+                  style={{ width: "140px", height: "60px" }}
+                  src={cryptoLogo}
+                />
+              </CardMedia>
+            </Link>
 
             <Box
               className={classes.mobileMenu}
@@ -137,7 +163,7 @@ const Navbar = () => {
             <CardMedia sx={{ display: { xs: "flex", md: "none" } }}>
               <img
                 alt="cryptoLogo"
-                style={{ width: "30px", height: "30px" }}
+                style={{ width: "100px", height: "40px" }}
                 src={cryptoLogo}
               />
             </CardMedia>
@@ -145,7 +171,6 @@ const Navbar = () => {
               variant="h5"
               noWrap
               component="a"
-              href=""
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -156,9 +181,7 @@ const Navbar = () => {
                 color: "inherit",
                 textDecoration: "none",
               }}
-            >
-              Coin Sauce
-            </Typography>
+            ></Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button
@@ -175,9 +198,8 @@ const Navbar = () => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
+                    <SettingsIcon fontSize='large'
+                      style={{ color: "rgba(180, 206, 241, 255)" }}
                     />
                   </IconButton>
                 </Tooltip>
@@ -214,7 +236,10 @@ const Navbar = () => {
                 <Link style={{ textDecoration: "none" }} to="/login">
                   <Button>
                     <Typography
-                      style={{ color: "white", fontFamily: "roboto" }}
+                      style={{
+                        color: "rgba(180, 206, 241, 255)",
+                        fontFamily: "roboto",
+                      }}
                     >
                       Login
                     </Typography>

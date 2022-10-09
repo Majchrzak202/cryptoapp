@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
   main: {
     padding: 5,
-    backgroundColor: "#F7e2c7",
+    backgroundColor: "#Fff2e1",
     borderRadius: 5,
     marginTop: 10,
     width: "95%",

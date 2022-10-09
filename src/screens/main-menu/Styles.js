@@ -53,13 +53,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const glowVariants = {
-  initial: {
-    opacity: 0,
-  },
-  hover: {
-    opacity: 1,
-  },
-};
-
 export default useStyles;

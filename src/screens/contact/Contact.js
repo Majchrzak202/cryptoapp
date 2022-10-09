@@ -41,15 +41,7 @@ const ContactForm = () => {
     <div style={{ backgroundColor: "rgba(1,10,21,255)" }}>
       <Container className={classes.container} component="main" id="contact">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <Box className={classes.box}>
           <Typography
             style={{ fontSize: "30px", fontFamily: "Roboto", fontWeight: 800 }}
             component="h1"

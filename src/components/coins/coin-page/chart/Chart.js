@@ -59,15 +59,15 @@ const Chart = () => {
     scales: {
       x: {
         grid: {
-          display: false
-        }
+          display: false,
+        },
       },
       y: {
         grid: {
-          display: false
-        }
-      }
-    }
+          display: false,
+        },
+      },
+    },
   };
 
   const data = {
@@ -80,7 +80,6 @@ const Chart = () => {
         borderColor: "rgba(180, 206, 241, 255)",
         backgroundColor: "rgba(180, 206, 241, 0.2)",
         borderWidth: 2.5,
-       
       },
     ],
   };

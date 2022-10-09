@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAuth } from "../../context/UserAuthContextProvider";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 const Login = () => {
@@ -20,15 +20,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { Login } = useAuth();
-  const navigate = useNavigate()
- 
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await Login(email, password);
-      navigate('/cryptos')
+      navigate("/cryptos");
     } catch (err) {
       setError(err.message);
     }
@@ -49,7 +48,13 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar
+            style={{
+              backgroundColor: "rgba(180, 206, 241, 255)",
+              color: "#e67b54",
+            }}
+            sx={{ m: 1, bgcolor: "secondary.main" }}
+          >
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -83,6 +88,12 @@ const Login = () => {
               autoComplete="email"
               autoFocus
               onChange={(e) => setEmail(e.target.value)}
+              InputLabelProps={{
+                style: { color: "rgba(180, 206, 241, 255)" },
+              }}
+              inputProps={{
+                style: { color: "rgba(180, 206, 241, 255)" },
+              }}
             />
             <TextField
               margin="normal"
@@ -94,9 +105,20 @@ const Login = () => {
               id="password"
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
+              InputLabelProps={{
+                style: { color: "rgba(180, 206, 241, 255)" },
+              }}
+              inputProps={{
+                style: { color: "rgba(180, 206, 241, 255)" },
+              }}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={
+                <Checkbox
+                  value="remember"
+                  style={{ color: "rgba(180, 206, 241, 255)" }}
+                />
+              }
               label="Remember me"
             />
             <Button
@@ -104,15 +126,35 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              style={{
+                backgroundColor: "rgba(180, 206, 241, 255)",
+                color: "black",
+              }}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to='/forgot'>{"Forgot password?"}</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(180, 206, 241, 255)",
+                  }}
+                  to="/forgot"
+                >
+                  {"Forgot password?"}
+                </Link>
               </Grid>
               <Grid item>
-                <Link to="/signup">{"Don't have an account? Sign Up"}</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(180, 206, 241, 255)",
+                  }}
+                  to="/signup"
+                >
+                  {"Don't have an account? Sign Up"}
+                </Link>
               </Grid>
             </Grid>
           </Box>
