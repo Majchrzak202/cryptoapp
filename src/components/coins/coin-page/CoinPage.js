@@ -129,8 +129,7 @@ const CoinPage = () => {
           </Box>
         </Box>
         <Box>
-          <Chart/>
-         {/*  <img src={Chart} style={{ width: "100%" }} alt="chart" /> */}
+          <Chart />
         </Box>
         <Box style={{ display: "flex", justifyContent: "center" }}>
           <Button onClick={() => addHandler(coin)}>Add to portfolio</Button>
