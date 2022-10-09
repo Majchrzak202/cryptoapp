@@ -24,20 +24,24 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   root: {
-    maxWidth: "90%",
+   
+    width: '90%',
     maxHeight: "80%",
+    height: '70%',
     margin: "30px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+    backgroundColor: 'green',
 
     "&:hover": {
       backgroundColor: "#DCDCDC",
       transition: "all .2s ease-in",
     },
     [theme.breakpoints.down("xs")]: {
-      maxWidth: "100%",
+     
+      width: '80vw'
     },
   },
   container: {
