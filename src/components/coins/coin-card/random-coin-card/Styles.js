@@ -16,7 +16,18 @@ const useStyles = makeStyles({
     fontSize: 25,
     width: 30,
     height: 30,
-  }
+  },
+  secondBox: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  skeletonBox: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "70px",
+  },
 });
 
 export default useStyles;

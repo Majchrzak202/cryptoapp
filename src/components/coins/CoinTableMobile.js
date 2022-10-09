@@ -15,9 +15,10 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const useStyles = makeStyles({
   table: {
     maxWidth: "100vw",
+    padding: 0,
     "& #Light": {
-      backgroundColor: "white",
-      color: "black",
+      backgroundColor: "rgba(222,237,255,255)",
+      color: "rgba(33,34,47,255)",
     },
     "& #Dark": {
       backgroundColor: "rgba(42,52,65,255)",
@@ -39,7 +40,7 @@ const CoinTableMobile = ({ search, coins }) => {
         <Skeleton
           variant="rectangular"
           animation="wave"
-          sx={{ width: 300, height: 500 }}
+          sx={{ width: 600, height: 500 }}
         />
       </Box>
     );
@@ -67,9 +68,9 @@ const CoinTableMobile = ({ search, coins }) => {
   );
 
   return (
-    <>
+    <div style={{backgroundCOlor: 'black'}}>
       <TableContainer className={classes.table} component={Paper}>
-        <Table id={theme} sx={{ width: "95vw" }} aria-label="simple table">
+        <Table id={theme} sx={{ width: "99vw" }} aria-label="simple table">
           <TableHead id={theme}>
             <TableRow>
               <TableCell id={theme}>#</TableCell>
@@ -103,7 +104,7 @@ const CoinTableMobile = ({ search, coins }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </div>
   );
 };
 

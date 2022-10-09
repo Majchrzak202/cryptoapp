@@ -23,14 +23,7 @@ const RandomCoinCard = ({ id }) => {
 
   if (typeof coin === "undefined") {
     return (
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "70px",
-        }}
-      >
+      <Box className={classes.skeletonBox}>
         <Skeleton
           variant="rectangular"
           borderradius="5px"
@@ -79,17 +72,11 @@ const RandomCoinCard = ({ id }) => {
           <img
             src={coinImage}
             alt={name}
-            style={{backgroundColor: secondColor}}
+            style={{ backgroundColor: secondColor }}
             className={classes.img}
           />
 
-          <Box
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+          <Box className={classes.secondBox}>
             <Typography
               style={{ fontSize: 15, fontWeight: 800, marginLeft: 10 }}
             >

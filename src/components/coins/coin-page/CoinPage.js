@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Card, Grid, Box, Typography, Button } from "@material-ui/core";
+import { Card, Box, Typography, Button } from "@material-ui/core";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { KeyboardArrowDown } from "@mui/icons-material";
-import Chart from "./../../../assets/Chart.png";
-import NewCoinCard from "../coin-card/NewCoinCard";
 import { useParams } from "react-router";
 import { Skeleton } from "@mui/material";
 import { usePortfolio } from "../../../context/PortfolioContextProvider";
 import useStyles from "./Styles";
+import RandomCoins from "./random-coins/RandomCoins";
+import MoreInfo from "./more-info/MoreInfo";
+import Chart from "./chart/Chart";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState("");
@@ -23,7 +24,6 @@ const CoinPage = () => {
       );
       const data = await response.json();
       setCoin(data);
-      console.log(data);
     };
     fetchCoin();
   }, [id]);
@@ -47,6 +47,21 @@ const CoinPage = () => {
     addToPortfolioHandler(coin);
   };
 
+  if (coin.length === 0) {
+    return (
+      <Box className={classes.skeletonBox}>
+        <Skeleton
+          variant="rectangular"
+          borderradius="5px"
+          animation="wave"
+          color="white"
+          className={classes.skeleton}
+          sx={{ bgcolor: "grey.200", height: "100vh" }}
+        />
+      </Box>
+    );
+  }
+
   if (randomCoins.length === 0) {
     return (
       <Box className={classes.skeletonBox}>
@@ -55,19 +70,7 @@ const CoinPage = () => {
           borderradius="5px"
           animation="wave"
           className={classes.skeleton}
-        />
-      </Box>
-    );
-  }
-
-  if (coin.length === 0) {
-    return (
-      <Box className={classes.skeletonBox}>
-        <Skeleton
-          variant="rectangular"
-          borderradius="5px"
-          animation="wave"
-          className={classes.skeleton}
+          sx={{ bgcolor: "grey.200", height: "100vh" }}
         />
       </Box>
     );
@@ -82,7 +85,6 @@ const CoinPage = () => {
   const volume = coin.coin.volume.toLocaleString();
   const totalSupply = coin.coin.totalSupply.toLocaleString();
   const coinImage = coin.coin.icon;
-  const website = coin.coin.websiteUrl;
 
   const mainColor = priceChange > 0 ? "#d0f5da" : "#ffebf6";
   const secondColor = priceChange > 0 ? "#309656" : "#d684ad";
@@ -105,9 +107,12 @@ const CoinPage = () => {
       <Card className={classes.card}>
         <Box className={classes.priceBox}>
           <Box className={classes.box}>
-            <Typography style={{ fontSize: "40px", fontFamily: "Roboto" }}>
-              ${price}
-            </Typography>
+            <img
+              alt={name}
+              style={{ height: 30, width: 30, marginRight: 8 }}
+              src={coinImage}
+            />
+            <h1 className={classes.title}>${price}</h1>
             <Typography
               style={{ backgroundColor: mainColor, color: secondColor }}
               className={classes.priceChange}
@@ -124,81 +129,18 @@ const CoinPage = () => {
           </Box>
         </Box>
         <Box>
-          <img src={Chart} style={{ width: "100%" }} alt="chart" />
+          <Chart />
         </Box>
-        <Button onClick={() => addHandler(coin)}>Add to portfolio</Button>
-        <Box className={classes.moreInfoBox}>
-          <Grid spacing={3} container>
-            <Grid xs={12} sm={12} md={3} lg={3} item>
-              <Box className={classes.moreInfoItem}>
-                <Typography
-                  className={classes.typo}
-                  style={{ fontSize: "12px" }}
-                  align="left"
-                >
-                  Total Supply:
-                </Typography>
-                <Typography className={classes.typo} align="center">
-                  {totalSupply}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid xs={12} sm={12} md={3} lg={3} item>
-              <Box className={classes.moreInfoItem}>
-                <Typography
-                  className={classes.typo}
-                  style={{ fontSize: "12px" }}
-                  align="left"
-                >
-                  Circulating Supply:
-                </Typography>
-                <Typography className={classes.typo} align="center">
-                  {avalibleSupply}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid xs={12} sm={12} md={3} lg={3} item>
-              <Box className={classes.moreInfoItem}>
-                <Typography
-                  className={classes.typo}
-                  style={{ fontSize: "12px" }}
-                  align="left"
-                >
-                  Market Cap:
-                </Typography>
-                <Typography className={classes.typo} align="center">
-                  ${marketCap}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid xs={12} sm={12} md={3} lg={3} item>
-              <Box className={classes.moreInfoItem}>
-                <Typography
-                  className={classes.typo}
-                  style={{ fontSize: "12px" }}
-                  align="left"
-                >
-                  Volume:
-                </Typography>
-                <Typography className={classes.typo} align="center">
-                  ${volume}
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
+        <Box style={{ display: "flex", justifyContent: "center" }}>
+          <Button onClick={() => addHandler(coin)}>Add to portfolio</Button>
         </Box>
-        <Box className={classes.randomCoinBox}>
-          <Box style={{ width: "66%" }}>
-            <Grid spacing={2} container>
-              {randomCoins.map((element, index) => (
-                <Grid key={index} xs={12} sm={12} md={6} xl={6} item>
-                  <NewCoinCard id={element} />
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-          <Box className={classes.newsBox}>Twitter Feed</Box>
-        </Box>
+        <MoreInfo
+          avalibleSupply={avalibleSupply}
+          marketCap={marketCap}
+          volume={volume}
+          totalSupply={totalSupply}
+        />
+        <RandomCoins randomCoins={randomCoins} />
       </Card>
     </div>
   );
