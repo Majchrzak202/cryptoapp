@@ -39,11 +39,13 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 25,
     },
   },
-  box:{  marginTop: 10,
+  box: {
+    marginTop: 10,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",}
+    justifyContent: "center",
+  },
 }));
 
 export default useStyles;
