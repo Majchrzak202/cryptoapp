@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Card, Box, Typography, Button } from "@material-ui/core";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { KeyboardArrowDown } from "@mui/icons-material";
-/* import Chart from "./../../../assets/Chart.png"; */
 import { useParams } from "react-router";
 import { Skeleton } from "@mui/material";
 import { usePortfolio } from "../../../context/PortfolioContextProvider";
 import useStyles from "./Styles";
 import RandomCoins from "./random-coins/RandomCoins";
 import MoreInfo from "./more-info/MoreInfo";
-import Chart from "../../../Chart";
+import Chart from "./chart/Chart";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState("");

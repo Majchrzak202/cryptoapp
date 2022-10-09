@@ -14,13 +14,14 @@ const SingleNews = ({ title, imgURL, link }) => {
           backgroundColor: "#F7e2c7",
           borderRadius: 5,
           marginTop: 10,
+          width: '95%'
         }}
       >
         <Typography style={{ fontSize: 14 }} textalign="left">
           {title}
         </Typography>
         <img
-          style={{ width: "90%", height: "auto", borderRadius: 6 }}
+          style={{ width: "90%", height: 'auto', borderRadius: 6 }}
           src={imgURL}
           alt="news"
         />

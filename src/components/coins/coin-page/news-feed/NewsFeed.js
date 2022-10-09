@@ -23,7 +23,7 @@ const NewsFeed = () => {
   }
 
   return (
-    <Box className={classes.newsBox}>
+    <Box sx={{ display: {}}} className={classes.newsBox}>
       {news.map((oneNews) => (
         <SingleNews
           key={oneNews.title}
