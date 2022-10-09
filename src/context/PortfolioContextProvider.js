@@ -9,7 +9,6 @@ const PortfolioContextProvider = ({ children }) => {
 
   const addToPortfolioHandler = (coin) => {
     setPortfolio(coin.coin);
-    console.log(coin)
   };
   useEffect(() => {
     addCoinsToDatabase();
@@ -20,7 +19,6 @@ const PortfolioContextProvider = ({ children }) => {
   }
 
   if (user !== null) {
-    console.log(user);
   }
 
   const addCoinsToDatabase = async () => {
