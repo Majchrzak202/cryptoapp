@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   media: {
     margin: "auto",
     width: " 100px",
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
   },
   root: {
-    maxWidth: "80%",
+    maxWidth: "90%",
     maxHeight: "80%",
     margin: "30px",
     display: "flex",
@@ -35,6 +35,9 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#DCDCDC",
       transition: "all .2s ease-in",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "100%",
     },
   },
   container: {
@@ -81,8 +84,8 @@ const useStyles = makeStyles({
     justifyContent: "center",
     marginTop: "3px",
     color: "black",
-    fontSize: 9
+    fontSize: 9,
   },
-});
+}));
 
 export default useStyles;
