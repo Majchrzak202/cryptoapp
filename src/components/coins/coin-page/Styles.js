@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     minHeight: "100vh",
     justifyContent: "center",
-    alignItems: 'center'
+    alignItems: "center",
   },
   card: {
     minHeight: "100vh",
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     [theme.breakpoints.down("xs")]: {
       width: "100vw",
-      padding: 0
+      padding: 0,
     },
   },
   priceBox: {
@@ -60,14 +60,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-
     height: "100vh",
   },
   skeleton: {
     display: "flex",
-
     width: "75vw",
     height: "100vh",
+    [theme.breakpoints.down("xs")]: {
+      width: '100vw',
+    },
   },
 }));
 
