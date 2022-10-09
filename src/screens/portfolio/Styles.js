@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "flex-start",
     minWidth: "100vw",
+
     marginTop: 50,
     [theme.breakpoints.down("xs")]: {
       marginTop: -20,
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     alingItems: "center",
     [theme.breakpoints.down("xs")]: {
       paddingTop: 50,
-      width: "100%",
+      minWidth: "95vw",
     },
     [theme.breakpoints.up(1600)]: {
       width: "95%",
