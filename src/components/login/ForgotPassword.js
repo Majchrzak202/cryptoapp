@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     setError("");
     try {
       await ResetPassword(email);
-      setShow(false)
+      setShow(false);
     } catch (err) {
       setError(err.message);
     }
@@ -48,7 +48,13 @@ const ForgotPassword = () => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar
+            style={{
+              backgroundColor: "rgba(180, 206, 241, 255)",
+              color: "#e67b54",
+            }}
+            sx={{ m: 1, bgcolor: "secondary.main" }}
+          >
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -83,8 +89,17 @@ const ForgotPassword = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
+                  variant="standard"
                   onChange={(e) => setEmail(e.target.value)}
+                  InputLabelProps={{
+                    style: { color: "rgba(180, 206, 241, 255)" },
+                  }}
+                  inputProps={{
+                    style: {
+                      color: "rgba(180, 206, 241, 255)",
+                      borderColor: "rgba(180, 206, 241, 255) !important",
+                    },
+                  }}
                 />
 
                 <Button
@@ -92,6 +107,10 @@ const ForgotPassword = () => {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  style={{
+                    backgroundColor: "rgba(180, 206, 241, 255)",
+                    color: "black",
+                  }}
                 >
                   Reset Password
                 </Button>
