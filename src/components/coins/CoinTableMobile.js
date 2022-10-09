@@ -40,7 +40,7 @@ const CoinTableMobile = ({ search, coins }) => {
         <Skeleton
           variant="rectangular"
           animation="wave"
-          sx={{ width: 600, height: 500 }}
+          sx={{ width: 600, height: '100vh' }}
         />
       </Box>
     );

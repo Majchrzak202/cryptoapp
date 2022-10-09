@@ -6,7 +6,7 @@ import Searchbar from "../searchbar/Searchbar";
 import CoinTableMobile from "./CoinTableMobile";
 import useWindowSize from "../hooks/useWindowSize";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   coinpage: {
     display: "flex",
     flexDirection: "column",
@@ -15,8 +15,11 @@ const useStyles = makeStyles({
     alignItems: "center",
     width: "100vw",
     marginTop: -5,
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: 'flex-start',
+    },
   },
-});
+}));
 
 const CoinList = ({ coins }) => {
   const [search, setSearch] = useState("");

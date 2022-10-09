@@ -15,12 +15,7 @@ const SingleNews = ({ title, imgURL, link }) => {
         <Typography style={{ fontSize: 14 }} textalign="left">
           {title}
         </Typography>
-        <img
-          classname={classes.img}
-          src={imgURL}
-          alt="news"
-          style={{ width: "90%", height: "auto" }}
-        />
+        <img className={classes.img} src={imgURL} alt="news" />
         <Typography style={{ display: "flex", fontSize: 13 }}>
           Read more <ArrowRightIcon />
         </Typography>

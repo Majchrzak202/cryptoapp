@@ -61,7 +61,7 @@ const Portfolio = () => {
           >
             This is youre Portfolio fren
           </Typography>
-          <Grid sx={{ marginTop: "15px" }} container spacing={1} height="100%">
+          <Grid sx={{ marginTop: "15px" }} container spacing={0} height="100%">
             {coins.map((coin) => (
               <Grid
                 style={{ display: "flex", justifyContent: "center" }}

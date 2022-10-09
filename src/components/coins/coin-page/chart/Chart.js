@@ -12,7 +12,7 @@ import {
 } from "chart.js";
 import dayjs from "dayjs";
 import { useParams } from "react-router";
-import { PolarArea } from "react-chartjs-2";
+import { Box } from "@material-ui/core";
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -85,9 +85,9 @@ const Chart = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Line options={options} data={data} />
-    </div>
+    </Box>
   );
 };
 
