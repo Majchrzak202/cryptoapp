@@ -1,13 +1,28 @@
 import React from "react";
-import "./HomePage.css";
+import Main from "./main/Main";
+import MainMenu from "./main-menu/MainMenu";
+import About from "./about/About";
+import ContactForm from "./contact/Contact";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  main: {
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: -5
+    },
+  },
+}));
 
 const HomePage = () => {
+  const classes = useStyles();
   return (
-    <div className="homepage">
-      <h2 style={{fontFamily: 'Roboto', fontSize: '35px'}} className='font'>
-        Welcome to the Coin Sauce<br />
-        Search coins
-      </h2>
+    <div className={classes.main}>
+      <Main />
+      <MainMenu />
+      <About />
+      <ContactForm />
     </div>
   );
 };
