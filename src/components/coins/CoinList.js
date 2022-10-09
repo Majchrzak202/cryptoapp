@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Card, Box} from "@mui/material";
+import { Card, Box } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import CoinTable from "./CoinTable";
 import Searchbar from "../searchbar/Searchbar";
+import CoinTableMobile from "./CoinTableMobile";
+import useWindowSize from "../hooks/useWindowSize";
 
 const useStyles = makeStyles({
   coinpage: {
@@ -11,14 +13,15 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     justifyContent: "center",
     alignItems: "center",
+    width: "100vw",
+    marginTop: -5,
   },
 });
 
-const CoinList = ({coins}) => {
-  const [search, setSearch] = useState('');
+const CoinList = ({ coins }) => {
+  const [search, setSearch] = useState("");
   const classes = useStyles();
-
-  console.log(coins)
+  const size = useWindowSize();
 
   return (
     <section className={classes.coinpage}>
@@ -26,7 +29,8 @@ const CoinList = ({coins}) => {
         <Searchbar setSearch={setSearch} />
       </Box>
       <Card>
-        <CoinTable coins={coins} search={search} />
+        {size.width < 700 && <CoinTableMobile coins={coins} search={search} />}
+        {size.width > 700 && <CoinTable coins={coins} search={search} />}
       </Card>
     </section>
   );
