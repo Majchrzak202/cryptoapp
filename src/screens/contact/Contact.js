@@ -43,7 +43,8 @@ const ContactForm = () => {
         <CssBaseline />
         <Box className={classes.box}>
           <Typography
-            style={{ fontSize: "30px", fontFamily: "Roboto", fontWeight: 800 }}
+            
+            className={classes.mainTitle}
             component="h1"
             variant="h1"
             align="left"

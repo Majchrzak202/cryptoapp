@@ -5,13 +5,15 @@ import "./App.css";
 import { useTheme } from "./context/ThemeContext";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import { Suspense } from "react";
+import LoadingSpinner from "./components/loading-spinner/LoadingSpinner";
+
 function App() {
   const { theme } = useTheme();
   return (
     <div className="App" id={theme}>
       <Navbar />
       <ScrollToTop />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingSpinner/>}>
         <BaseRoutes />
       </Suspense>
       <Footer />

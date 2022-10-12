@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         right: 120,
       },
       [theme.breakpoints.down("xs")]: {
-        right: 40,
+        right: 10,
       },
       [theme.breakpoints.up(500)]: {
         right: 90,

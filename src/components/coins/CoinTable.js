@@ -37,7 +37,7 @@ const CoinTable = ({ search, coins }) => {
         <Skeleton
           variant="rectangular"
           animation="wave"
-          sx={{ width: 700, height: 500 }}
+          sx={{ width: 700, height: '100vh' }}
           style={{ backgroundColor: "#cde3fb" }}
         />
       </Box>
@@ -97,7 +97,7 @@ const CoinTable = ({ search, coins }) => {
                   <TableCell id={theme} component="th" >
                     {row.number}
                   </TableCell>
-                  <TableCell  style={{ width: 40}} id={theme} align="left">
+                  <TableCell  style={{ width: 60}} id={theme} align="left">
                     <img
                      style={{ width: 20, height: 20 }} 
                       src={row.image}

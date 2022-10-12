@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       justifyContent: 'flex-start',
     },
+    [theme.breakpoints.up(1500)]: {
+      justifyContent: 'flex-start',
+      marginTop: 5
+    },
   },
 }));
 

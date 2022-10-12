@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Link as SmoothLink } from "react-scroll";
 import useStyles from "./Styles";
+import cryptoLogo from "./../../assets/cryptoLogo.svg";
 
 const glowVariants = {
   initial: {
@@ -80,6 +81,7 @@ const MainMenu = () => {
             </Typography>
           </Box>
         </motion.div>
+         <img alt='logo' className={classes.img} src={cryptoLogo} /> 
       </Box>
     </Box>
   );
