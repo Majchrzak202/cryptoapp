@@ -2,6 +2,8 @@
 
 <h5>Overview</h5>
 
+![Screenshot 2022-10-10 at 07 10 49](https://user-images.githubusercontent.com/93245847/195248237-45d29780-5218-4ef5-8d5d-b2f2304331de.png)
+
 <p>This is Coin Sauce. You can track prices of favorite Cryptos. This is an educational, non commerce project made with Love and React. You can search for desired crypto asset, see market cap, total supply and current price chart. If you log in, you can add desired asset to portfolio and manage user settings. App suggest random coins to watch and also provides news from Crypto World.</p>
 
 <h5>Features</h5>
