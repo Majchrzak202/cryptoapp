@@ -40,7 +40,7 @@ const CoinTableMobile = ({ search, coins }) => {
         <Skeleton
           variant="rectangular"
           animation="wave"
-          sx={{ width: 600, height: '100vh' }}
+          sx={{ width: 600, height: "100vh" }}
         />
       </Box>
     );
@@ -68,7 +68,7 @@ const CoinTableMobile = ({ search, coins }) => {
   );
 
   return (
-    <div style={{backgroundCOlor: 'black'}}>
+    <div style={{ backgroundCOlor: "black" }}>
       <TableContainer className={classes.table} component={Paper}>
         <Table id={theme} sx={{ width: "99vw" }} aria-label="simple table">
           <TableHead id={theme}>
