@@ -10,7 +10,13 @@ const Main = () => {
   return (
     <div className={classes.main}>
       <div className={classes.videoDiv}>
-        <video className={classes.video} src={TitleVideo} autoPlay loop muted />
+        <video
+          className={classes.video}
+          src={TitleVideo}
+          autoPlay
+          loop
+          defaultMuted
+        />
       </div>
       <Box className={classes.absoluteText}>
         <Box>
