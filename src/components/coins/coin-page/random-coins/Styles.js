@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   innerRandomBox: {
     width: "66%",
     display: "flex",
-    alignItems: "flex-start",
+    alignItems: "center",
+    flexDirection: 'column',
     [theme.breakpoints.down("xs")]: {
       width: "80%",
       justifyContent: "center",

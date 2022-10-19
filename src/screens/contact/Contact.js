@@ -10,6 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 import useStyles from "./Styles";
+import styled from "@emotion/styled";
 
 const ContactForm = () => {
   const form = useRef();
@@ -37,13 +38,39 @@ const ContactForm = () => {
     setShow(false);
   };
 
+  const StyledTextField = styled(TextField)({
+    "& label": {
+      color: "rgba(180, 206, 241, 255)",
+    },
+    "&:hover label": {
+      fontWeight: 700,
+    },
+    "& label.Mui-focused": {
+      color: "rgba(180, 206, 241, 255)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "rgba(180, 206, 241, 255)",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgba(180, 206, 241, 255)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgba(180, 206, 241, 255)",
+        borderWidth: 2,
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "rgba(180, 206, 241, 255)",
+      },
+    },
+  });
+
   return (
     <div style={{ backgroundColor: "rgba(1,10,21,255)" }}>
       <Container className={classes.container} component="main" id="contact">
         <CssBaseline />
         <Box className={classes.box}>
           <Typography
-            
             className={classes.mainTitle}
             component="h1"
             variant="h1"
@@ -60,11 +87,12 @@ const ContactForm = () => {
               sx={{ mt: 3 }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    InputLabelProps={{
+                <Grid item xs={12} >
+                  <StyledTextField
+                    /*                     InputLabelProps={{
                       style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
+                    }} */
+                    variant="outlined"
                     name="from_name"
                     required
                     fullWidth
@@ -72,44 +100,40 @@ const ContactForm = () => {
                     label="Name"
                     type="text"
                     color="primary"
-                    inputProps={{
+                    /* inputProps={{
                       style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
+                    }} */
                   />
                 </Grid>
 
                 <Grid item xs={12}>
-                  <TextField
-                    InputLabelProps={{
+                  <StyledTextField
+                    /*  InputLabelProps={{
                       style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
+                    }} */
                     required
                     fullWidth
                     label="Adres E-mail"
                     type="text"
                     name="from_email"
                     id="from_email"
-                    inputProps={{
+                    variant="outlined"
+                    /* inputProps={{
                       style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
+                    }} */
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    InputLabelProps={{
-                      style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
+                  <StyledTextField
+                    variant="outlined"
                     multiline={true}
-                    minRows={8}
+                    minRows={8} 
                     required
                     fullWidth
                     name="message"
                     label="New message"
                     type="message"
                     id="message"
-                    inputProps={{
-                      style: { color: "rgba(180, 206, 241, 255)" },
-                    }}
                   />
                 </Grid>
 
