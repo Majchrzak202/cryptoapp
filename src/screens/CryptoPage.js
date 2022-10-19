@@ -7,7 +7,7 @@ const CryptoPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "https://api.coinstats.app/public/v1/coins?skip=0&limit=200&currency=USD"
+        "https://api.coinstats.app/public/v1/coins?skip=0&limit=100&currency=USD"
       );
       const data = await response.json();
       setCoins(data);
