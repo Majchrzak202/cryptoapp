@@ -57,11 +57,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+   
   },
   mainTitle: {
     fontSize: 30,
     fontFamily: "Roboto",
     fontWeight: 800,
+    paddingBottom: 20,
     [theme.breakpoints.up(2000)]: {
       fontSize: 60
      },
