@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy } from "react";
 import { Route } from "react-router";
 import About from "../screens/about/About";
 import Contact from "../screens/contact/Contact";
