@@ -1,25 +1,27 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { CardMedia } from "@mui/material";
-import cryptoLogo from "./../../assets/cryptoLogo.svg";
+import React from "react";
 import useStyles from "./Styles";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Button,
+  Tooltip,
+  Menu,
+  MenuItem,
+  CardMedia,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import SettingsIcon from "@mui/icons-material/Settings";
+import cryptoLogo from "./../../assets/cryptoLogo.svg";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/UserAuthContextProvider";
 import { useTheme } from "../../context/ThemeContext";
 import { Link as SmoothLink } from "react-scroll";
 import { useLocation } from "react-router-dom";
-import SettingsIcon from "@mui/icons-material/Settings";
+
 
 const Navbar = () => {
   const { Logout, user } = useAuth();
@@ -36,7 +38,7 @@ const Navbar = () => {
         to="mainMenu"
         spy={true}
         smooth={true}
-        offset={-30}
+        offset={-20}
         duration={500}
       >
         Main Menu
@@ -55,7 +57,7 @@ const Navbar = () => {
         to="contact"
         spy={true}
         smooth={true}
-        offset={-30}
+        offset={-70}
         duration={500}
         className={classes.link}
       >
