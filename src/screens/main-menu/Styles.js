@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   main: {
     width: "100vw",
+    maxWidth: '100vw',
     display: "flex",
     height: "100vh",
     paddingTop: 80,
@@ -18,14 +19,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuBox: {
-    width: 1536,
+    
     padding: 50,
     display: "flex",
     flexDirection: "column",
 
     [theme.breakpoints.down(400)]: {
       padding: 50,
-
       justifyContent: "center",
     },
     [theme.breakpoints.up(1000)]: {
@@ -64,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
   menuItemBox: {
     display: "flex",
     alignItems: "flex-start",
-    width: "15em",
+    width: "18em",
     [theme.breakpoints.up(1500)]: {
-      width: "20em",
+      width: "25em",
     },
   },
   menuItemLink: {
