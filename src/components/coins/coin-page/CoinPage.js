@@ -9,6 +9,8 @@ import useStyles from "./Styles";
 import RandomCoins from "./random-coins/RandomCoins";
 import MoreInfo from "./more-info/MoreInfo";
 import Chart from "./chart/Chart";
+import { toast } from "react-toastify";
+import { useAuth } from "../../../context/UserAuthContextProvider";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState("");
@@ -16,6 +18,7 @@ const CoinPage = () => {
   const { id } = useParams();
   const classes = useStyles();
   const { addToPortfolioHandler } = usePortfolio();
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchCoin = async () => {
@@ -44,7 +47,30 @@ const CoinPage = () => {
   }, []);
 
   const addHandler = (coin) => {
-    addToPortfolioHandler(coin);
+    if (user === null) {
+      toast.error("You have to be logged in!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      addToPortfolioHandler(coin);
+      toast.info("Coin added to Portfolio", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   };
 
   if (coin.length === 0) {
@@ -81,8 +107,8 @@ const CoinPage = () => {
   const price = coin.coin.price.toFixed(2);
   const priceChange = coin.coin.priceChange1d;
   const avalibleSupply = coin.coin.availableSupply.toLocaleString();
-  const marketCap = coin.coin.marketCap.toLocaleString();
-  const volume = coin.coin.volume.toLocaleString();
+  const marketCap = coin.coin.marketCap.toFixed(2).toLocaleString();
+  const volume = coin.coin.volume.toFixed(2).toLocaleString();
   const totalSupply = coin.coin.totalSupply.toLocaleString();
   const coinImage = coin.coin.icon;
 
