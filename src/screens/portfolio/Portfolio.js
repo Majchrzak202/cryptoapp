@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import useStyles from "./Styles";
-import { Grid, Box, Typography } from "@mui/material";
+import { Grid, Box, Typography, Skeleton } from "@mui/material";
 import CoinCard from "../../components/coins/coin-card/coin-card/CoinCard";
 import { getDatabase, ref, remove } from "firebase/database";
 import { useAuth } from "../../context/UserAuthContextProvider";
-import { Skeleton } from "@mui/material";
+import { toast } from "react-toastify";
 
 const Portfolio = () => {
   const [coins, setCoins] = useState([]);
@@ -48,6 +48,16 @@ const Portfolio = () => {
     const data = await remove(ref(db, `${user.uid}/` + coinName));
     console.log(db);
     fetchCoinsFromDatabase();
+    toast.info("Removed Coin from ", {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   };
 
   return (
